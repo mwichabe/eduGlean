@@ -13,6 +13,14 @@ export default function LanguageLandingPage() {
     });
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [showInstructorModal, setShowInstructorModal] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    // Hero images for slide show
+    const heroImages = [
+        "https://i.pinimg.com/736x/4f/07/da/4f07da936802fbfc7aadb1120de14076.jpg",
+        "https://i.pinimg.com/1200x/30/4c/7b/304c7b71cc367fde56a083e6ea8c2a60.jpg",
+        "https://i.pinimg.com/1200x/ba/18/00/ba18005dbc87939adf773263334ac586.jpg"
+    ];
 
     const handleSubmit = () => {
         if (formData.name && formData.email && formData.language) {
@@ -29,6 +37,19 @@ export default function LanguageLandingPage() {
             ...formData,
             [e.target.name]: e.target.value
         });
+    };
+
+    // Slide navigation functions
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    };
+
+    const goToSlide = (index) => {
+        setCurrentSlide(index);
     };
 
     // Language data with 0 tutors as requested
@@ -61,8 +82,12 @@ export default function LanguageLandingPage() {
 
     // Sample reviews
     const reviews = [
-        { id: 1, name: "Carolyn Ortiz", rating: 4.5, text: "Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing ", language: "", avatar: "https://images.unsplash.com/photo-1494790108755-2616b332c3ca?w=50&h=50&fit=crop" },
-        { id: 2, name: "Dennis Barrett", rating: 4, text: "At weddings believed laughing although the Moonlight newspaper up its enjoyment agreeable depending.", language: "", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop" },
+        { id: 1, name: "Carolyn Ortiz", rating: 4.5, text: "Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing ", language: "Spanish", avatar: "https://images.unsplash.com/photo-1494790108755-2616b332c3ca?w=50&h=50&fit=crop", role: "student" },
+        { id: 2, name: "Dennis Barrett", rating: 4, text: "At weddings believed laughing although Moonlight newspaper up its enjoyment agreeable depending.", language: "French", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop", role: "student" },
+        { id: 3, name: "Maria Rodriguez", rating: 5, text: "Excellent teaching methods! Very patient and explains everything clearly. My Spanish has improved so much in just 2 months.", language: "Spanish", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop", role: "student" },
+        { id: 4, name: "Prof. James Chen", rating: 4.5, text: "Great platform for connecting students with qualified tutors. The scheduling system is intuitive and the quality of instructors is excellent.", language: "Chinese", avatar: "https://images.unsplash.com/photo-1472099645785-5e8ecafe975d?w=50&h=50&fit=crop", role: "tutor" },
+        { id: 5, name: "Sarah Johnson", rating: 5, text: "Amazing experience! The interactive lessons make learning fun and engaging. My daughter looks forward to every session.", language: "English", avatar: "https://images.unsplash.com/photo-1494790108755-2616b332c3ca?w=50&h=50&fit=crop", role: "student" },
+        { id: 6, name: "Dr. Michael Kumar", rating: 4, text: "As a tutor, this platform provides great tools for lesson planning and student management. The video quality is excellent for online teaching.", language: "Hindi", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop", role: "tutor" }
     ];
 
     return (
@@ -76,31 +101,53 @@ export default function LanguageLandingPage() {
             <meta property="og:type" content="website" />
 
             {/* Navigation */}
-            <nav className="bg-white shadow-md fixed w-full top-0 z-50 border-b border-gray-200">
+            <nav className="bg-white shadow-sm fixed w-full top-0 z-50 border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center space-x-4">
+                    <div className="flex items-center justify-between h-16">
+                        {/* Logo on left */}
+                        <div className="flex items-center space-x-8">
                             <img
                                 src={logo}
-                                alt="Logo"
-                                className="absolute top-0 left-0 h-20 w-20 object-cover"
+                                alt="eduGlean"
+                                className="h-8 w-auto"
                             />
-                            <div className="flex items-center space-x-3 ml-24">
-                                <a href="#tutors" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">Find language tutors</a>
-                                <a href="#tutors" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">Find academic tutors</a>
-                                <a href="#tutors" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">Become a tutor</a>
+
+                            {/* Menu items next to logo - visible on larger screens */}
+                            <div className="hidden md:flex items-center space-x-6">
+                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                    Find language tutors
+                                </a>
+                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                    Find academic tutors
+                                </a>
+                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                    Become a tutor
+                                </a>
                             </div>
                         </div>
 
-                        <div className="hidden md:flex items-center space-x-8">
-                            <a href="#how-it-works" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">How It Works</a>
-                            <a href="#reviews" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">Reviews</a>
-                            <a href="#contact" className="text-orange-600 hover:text-orange-700 transition-colors duration-300 font-medium">Contact</a>
-                            <button className="bg-orange-400 text-white px-6 py-2 rounded-full hover:bg-orange-500 transition-colors duration-300">
-                                Start Teaching Today
-                            </button>
+                        {/* Right side: Language selector and Login */}
+                        <div className="hidden md:flex items-center space-x-4">
+                            <div className="relative">
+                                <button className="flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                                    </svg>
+                                    <span>Language</span>
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <a href="/login" className="flex items-center space-x-1 text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Log in</span>
+                            </a>
                         </div>
 
+                        {/* Mobile menu button */}
                         <button
                             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -110,23 +157,48 @@ export default function LanguageLandingPage() {
                     </div>
                 </div>
 
+                {/* Mobile menu */}
                 {mobileMenuOpen && (
-                    <div className="md:hidden bg-orange-50 border-t border-orange-200">
+                    <div className="md:hidden bg-white border-t border-gray-100">
                         <div className="px-4 pt-4 pb-6 space-y-3">
-                            <a href="#tutors" className="block py-3 text-orange-700 hover:text-orange-800 transition-colors font-medium">Expert Tutors</a>
-                            <a href="#how-it-works" className="block py-3 text-orange-700 hover:text-orange-800 transition-colors font-medium">How It Works</a>
-                            <a href="#reviews" className="block py-3 text-orange-700 hover:text-orange-800 transition-colors font-medium">Reviews</a>
-                            <a href="#contact" className="block py-3 text-orange-700 hover:text-orange-800 transition-colors font-medium">Contact</a>
-                            <button className="w-full bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 transition-colors duration-300 mt-4">
-                                Start Teaching Today
-                            </button>
+                            <a href="#tutors" className="block py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
+                                Find language tutors
+                            </a>
+                            <a href="#tutors" className="block py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
+                                Find academic tutors
+                            </a>
+                            <a href="#tutors" className="block py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
+                                Become a tutor
+                            </a>
+                            <div className="pt-2 border-t border-gray-100">
+                                <button className="w-full flex items-center justify-between py-2 text-gray-600 hover:text-gray-800 transition-colors text-sm">
+                                    <div className="flex items-center space-x-1">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                                        </svg>
+                                        <span>Language</span>
+                                    </div>
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <a href="/login" className="flex items-center space-x-1 py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Log in</span>
+                            </a>
                         </div>
                     </div>
                 )}
             </nav>
 
+
+
+
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+            <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-orange-100">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
@@ -170,11 +242,50 @@ export default function LanguageLandingPage() {
                         </div>
 
                         <div className="relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
-                                alt="Students learning languages"
-                                className="rounded-2xl shadow-xl w-full object-cover"
-                            />
+                            {/* Slide Show */}
+                            <div className="relative overflow-hidden rounded-2xl shadow-xl">
+                                <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                                    {heroImages.map((image, index) => (
+                                        <img
+                                            key={index}
+                                            src={image}
+                                            alt={`Hero slide ${index + 1}`}
+                                            className="w-full h-96 object-cover flex-shrink-0"
+                                            style={{ minWidth: '100%' }}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Slide Navigation */}
+                            <button
+                                onClick={prevSlide}
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                            >
+                                <ArrowRight className="w-6 h-6 rotate-180" />
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                            >
+                                <ArrowRight className="w-6 h-6" />
+                            </button>
+
+                            {/* Slide Indicators */}
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                                {heroImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => goToSlide(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                                            ? 'bg-orange-500 w-8'
+                                            : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Rating Badge */}
                             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-200">
                                 <div className="flex items-center space-x-3">
                                     <div className="flex">
@@ -199,9 +310,6 @@ export default function LanguageLandingPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}
                     <div className="text-center mb-14">
-                        <p className="inline-flex items-center px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold tracking-wide uppercase mb-4">
-                            Our tutors
-                        </p>
                         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
                             Expert Tutors
                         </h2>
@@ -358,14 +466,11 @@ export default function LanguageLandingPage() {
             <section id="reviews" className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <p className="inline-flex items-center px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold tracking-wide uppercase mb-4">
-                            Student feedback
-                        </p>
                         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
                             Reviews
                         </h2>
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            Some valuable feedback from our students around the world.
+                            Valuable feedback from our students and tutors around the world.
                         </p>
                     </div>
 
@@ -384,6 +489,9 @@ export default function LanguageLandingPage() {
                                     <div>
                                         <h3 className="text-sm font-semibold text-gray-900">
                                             {review.name}
+                                            {review.role === 'tutor' && (
+                                                <span className="ml-2 text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-medium">Tutor</span>
+                                            )}
                                         </h3>
                                         <div className="flex items-center gap-1 mt-1">
                                             {[...Array(5)].map((_, i) => (
@@ -398,17 +506,22 @@ export default function LanguageLandingPage() {
                                 </header>
 
                                 <p className="text-sm text-gray-700 leading-relaxed mb-4 flex-1">
-                                    “{review.text}”
+                                    "{review.text}"
                                 </p>
 
                                 <footer className="flex items-center justify-between text-xs text-gray-500">
-                                    <span className="font-medium text-orange-500">
-                                        Learning {review.language}
-                                    </span>
+                                    <div className="flex items-center gap-3">
+                                        <span className="font-medium text-orange-500">
+                                            Learning {review.language || 'Multiple Languages'}
+                                        </span>
+                                        <span className="text-gray-400">
+                                            {review.role === 'tutor' ? '• Tutor' : '• Student'}
+                                        </span>
+                                    </div>
                                     <span>
                                         {review.lessonsCompleted
                                             ? `${review.lessonsCompleted}+ lessons completed`
-                                            : 'Verified student'}
+                                            : review.role === 'tutor' ? 'Verified Instructor' : 'Verified Student'}
                                     </span>
                                 </footer>
                             </article>
@@ -426,7 +539,7 @@ export default function LanguageLandingPage() {
                             Ready to Start Learning?
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Fill out the form below and we&apos;ll match you with the perfect tutor for your language journey.
+                            Get started with your language learning journey today.
                         </p>
                     </div>
 
@@ -666,7 +779,7 @@ export default function LanguageLandingPage() {
                             All rights reserved. Global online learning platform.
                         </div>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <a href="#" className="hover:underline">Terms of Service</a>
+                            <a href="#" className="hover:underline">Legal</a>
                             <a href="#" className="hover:underline">Privacy Policy</a>
                             <a href="#" className="hover:underline">Cookie Policy</a>
                         </div>
