@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Globe, BookOpen, Users, Award, CheckCircle, Menu, X, Star, Play, ArrowRight, Zap, Calendar, Video, Search } from 'lucide-react';
 import './LandingPage.css';
 import logo from '../assets/logo.png'
@@ -21,6 +21,15 @@ export default function LanguageLandingPage() {
         "https://i.pinimg.com/1200x/30/4c/7b/304c7b71cc367fde56a083e6ea8c2a60.jpg",
         "https://i.pinimg.com/1200x/ba/18/00/ba18005dbc87939adf773263334ac586.jpg"
     ];
+
+    // Automatic slideshow
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+        }, 4000); // Change slide every 4 seconds
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, [heroImages.length]);
 
     const handleSubmit = () => {
         if (formData.name && formData.email && formData.language) {
@@ -109,18 +118,18 @@ export default function LanguageLandingPage() {
                             <img
                                 src={logo}
                                 alt="eduGlean"
-                                className="h-8 w-auto"
+                                className="h-20 w-auto"
                             />
 
                             {/* Menu items next to logo - visible on larger screens */}
                             <div className="hidden md:flex items-center space-x-6">
-                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                <a href="#tutors" className="text-black hover:text-orange-600 transition-colors duration-200 text-sm">
                                     Find language tutors
                                 </a>
-                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                <a href="#tutors" className="text-black-500 hover:text-orange-600 transition-colors duration-200 text-sm">
                                     Find academic tutors
                                 </a>
-                                <a href="#tutors" className="text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                                <a href="#tutors" className="text-black-500 hover:text-orange-600 transition-colors duration-200 text-sm">
                                     Become a tutor
                                 </a>
                             </div>
@@ -130,16 +139,14 @@ export default function LanguageLandingPage() {
                         <div className="hidden md:flex items-center space-x-4">
                             <div className="relative">
                                 <button className="flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                                    </svg>
+                                    <Globe className="w-4 h-4 text-gray-600" strokeWidth={2} />
                                     <span>Language</span>
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </button>
                             </div>
-                            <a href="/login" className="flex items-center space-x-1 text-orange-500 hover:text-orange-600 transition-colors duration-200 text-sm">
+                            <a href="/login" className="flex items-center space-x-1 text-orange-600 bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg transition-colors duration-200 text-sm">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                                 </svg>
@@ -170,18 +177,9 @@ export default function LanguageLandingPage() {
                             <a href="#tutors" className="block py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
                                 Become a tutor
                             </a>
-                            <div className="pt-2 border-t border-gray-100">
-                                <button className="w-full flex items-center justify-between py-2 text-gray-600 hover:text-gray-800 transition-colors text-sm">
-                                    <div className="flex items-center space-x-1">
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                                        </svg>
-                                        <span>Language</span>
-                                    </div>
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
+                            <div className="flex items-center space-x-1">
+                                <Globe className="w-4 h-4" />
+                                <span>Language</span>
                             </div>
                             <a href="/login" className="flex items-center space-x-1 py-2 text-orange-500 hover:text-orange-600 transition-colors text-sm">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -383,7 +381,7 @@ export default function LanguageLandingPage() {
                         <article className="flex flex-col">
                             <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                 <img
-                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=240&fit=crop"
+                                    src="https://i.pinimg.com/736x/06/61/44/066144905b8ec0781580360688f764df.jpg"
                                     alt="Find a tutor"
                                     className="w-full h-40 object-cover"
                                 />
@@ -410,7 +408,7 @@ export default function LanguageLandingPage() {
                         <article className="flex flex-col">
                             <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                 <img
-                                    src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=400&h=240&fit=crop"
+                                    src="https://i.pinimg.com/1200x/aa/35/eb/aa35ebac9ce5c3ef7ef5075fc0bd91dd.jpg"
                                     alt="Schedule lessons"
                                     className="w-full h-40 object-cover"
                                 />
@@ -436,7 +434,7 @@ export default function LanguageLandingPage() {
                         <article className="flex flex-col">
                             <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                 <img
-                                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=240&fit=crop"
+                                    src="https://i.pinimg.com/736x/d5/15/10/d51510663b6f09a2d9b2ec186bcd37ea.jpg"
                                     alt="Start learning online"
                                     className="w-full h-40 object-cover"
                                 />
