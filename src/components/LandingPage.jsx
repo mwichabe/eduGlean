@@ -71,22 +71,6 @@ export default function LanguageLandingPage() {
         { name: "Armenian", tutors: 0, icon: "🇦🇲" },
         { name: "Azerbaijani", tutors: 0, icon: "🇦🇿" },
         { name: "Baluchi", tutors: 0, icon: "🇵🇰" },
-        // { name: "Bengali", tutors: 0, icon: "🇧🇩" },
-        // { name: "Bulgarian", tutors: 0, icon: "🇧🇬" },
-        // { name: "Cantonese", tutors: 0, icon: "🇭🇰" },
-        // { name: "Chinese", tutors: 0, icon: "🇨🇳" },
-        // { name: "Czech", tutors: 0, icon: "🇨🇿" },
-        // { name: "Danish", tutors: 0, icon: "🇩🇰" },
-        // { name: "Dutch", tutors: 0, icon: "🇳🇱" },
-        // { name: "English", tutors: 0, icon: "🇺🇸" },
-        // { name: "French", tutors: 0, icon: "🇫🇷" },
-        // { name: "German", tutors: 0, icon: "🇩🇪" },
-        // { name: "Greek", tutors: 0, icon: "🇬🇷" },
-        // { name: "Hebrew", tutors: 0, icon: "🇮🇱" },
-        // { name: "Hindi", tutors: 0, icon: "🇮🇳" },
-        // { name: "Italian", tutors: 0, icon: "🇮🇹" },
-        // { name: "Japanese", tutors: 0, icon: "🇯🇵" },
-        // { name: "Korean", tutors: 0, icon: "🇰🇷" }
     ];
 
     // Sample reviews
@@ -408,7 +392,7 @@ export default function LanguageLandingPage() {
                         <article className="flex flex-col">
                             <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                 <img
-                                    src="https://i.pinimg.com/1200x/aa/35/eb/aa35ebac9ce5c3ef7ef5075fc0bd91dd.jpg"
+                                    src="https://i.pinimg.com/1200x/bd/26/6e/bd266eec47507fbe6f6eda6e39732274.jpg"
                                     alt="Schedule lessons"
                                     className="w-full h-48 object-cover object-top"
                                 />
@@ -662,7 +646,7 @@ export default function LanguageLandingPage() {
                         {/* Teaching */}
                         <div>
                             <h4 className="font-semibold mb-3 text-sm text-white">
-                                Teaching Online
+                                Teach Online
                             </h4>
                             <ul className="space-y-1">
                                 <li><a href="#" className="hover:underline">Become a tutor</a></li>
