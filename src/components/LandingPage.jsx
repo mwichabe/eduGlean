@@ -365,7 +365,7 @@ export default function LanguageLandingPage() {
                         <article className="flex flex-col">
                             <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                 <img
-                                    src="https://i.pinimg.com/736x/06/61/44/066144905b8ec0781580360688f764df.jpg"
+                                    src="https://i.pinimg.com/736x/55/e0/b2/55e0b2dd6dd1f837cf81fed815ba345b.jpg"
                                     alt="Find a tutor"
                                     className="w-full h-48 object-cover object-top"
                                 />
