@@ -383,7 +383,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/736x/06/61/44/066144905b8ec0781580360688f764df.jpg"
                                     alt="Find a tutor"
-                                    className="w-full h-40 object-cover"
+                                    className="w-full h-48 object-cover object-top"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -410,7 +410,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/1200x/aa/35/eb/aa35ebac9ce5c3ef7ef5075fc0bd91dd.jpg"
                                     alt="Schedule lessons"
-                                    className="w-full h-40 object-cover"
+                                    className="w-full h-48 object-cover object-top"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -436,7 +436,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/736x/d5/15/10/d51510663b6f09a2d9b2ec186bcd37ea.jpg"
                                     alt="Start learning online"
-                                    className="w-full h-40 object-cover"
+                                    className="w-full h-48 object-cover object-top"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -656,14 +656,13 @@ export default function LanguageLandingPage() {
                             <ul className="space-y-1">
                                 <li><a href="#" className="hover:underline">Become a student</a></li>
                                 <li><a href="#" className="hover:underline">Refer a friend</a></li>
-                                <li><a href="#" className="hover:underline">Reward a student</a></li>
                             </ul>
                         </div>
 
                         {/* Teaching */}
                         <div>
                             <h4 className="font-semibold mb-3 text-sm text-white">
-                                Teaching
+                                Teaching Online
                             </h4>
                             <ul className="space-y-1">
                                 <li><a href="#" className="hover:underline">Become a tutor</a></li>
@@ -774,7 +773,7 @@ export default function LanguageLandingPage() {
                     <div className="mt-4 flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-400 gap-3 border-t border-gray-700 pt-4">
                         <div className="text-center md:text-left">
                             Copyright © {new Date().getFullYear()} EduGlean LLC.
-                            All rights reserved. Global online learning platform.
+                            All rights reserved.
                         </div>
                         <div className="flex flex-wrap items-center justify-center gap-4">
                             <a href="#" className="hover:underline">Legal</a>
