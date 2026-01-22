@@ -208,6 +208,7 @@ export default function LanguageLandingPage() {
                                 </button>
                             </div>
 
+
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8">
                                 {[
                                     { number: "0k", label: "Online Courses" },
@@ -278,9 +279,48 @@ export default function LanguageLandingPage() {
                                     </div>
                                     <div>
                                         <p className="text-lg font-bold text-gray-900">4.5/5</p>
-                                        <p className="text-sm text-gray-600">Student Rating</p>
+                                        <p className="text-sm text-gray-600">Reviews</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Full Width Text Section */}
+            <section className="py-16 bg-gray-50">
+                <div className="w-full">
+                    <div className="space-y-16">
+                        <div className="text-center space-y-6 px-4 sm:px-6 lg:px-8 group">
+                            <div className="transform transition-all duration-300 hover:scale-105">
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight max-w-6xl mx-auto mb-6">
+                                    Learn languages, Master academics, Succeed Anywhere
+                                </h2>
+                                <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                                    Learn one-on-one lessons with expert tutors in languages or academic subjects and choose the one that matches your needs - anytime, anywhere.
+                                </p>
+                            </div>
+                            <div className="flex justify-center mt-8">
+                                <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                    Start Learning Today
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="text-center space-y-6 px-4 sm:px-6 lg:px-8 bg-white py-12 rounded-2xl shadow-sm border border-gray-200 group">
+                            <div className="transform transition-all duration-300 hover:scale-105">
+                                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-500 leading-tight max-w-6xl mx-auto mb-6">
+                                    Teach your expertise, Inspire Learners everywhere. Earn while you make a difference.
+                                </h3>
+                                <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                                    Whether you are an expert in a language or an academic field, share your knowledge and earn while making a global impact.
+                                </p>
+                            </div>
+                            <div className="flex justify-center mt-8">
+                                <button className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                    Become a Tutor
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -293,10 +333,10 @@ export default function LanguageLandingPage() {
                     {/* Header */}
                     <div className="text-center mb-14">
                         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
-                            Expert Tutors
+                            Find Your Perfect Tutors
                         </h2>
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            Learn from certified native speakers with years of teaching experience and proven results.
+                            Learn from expert tutors across the globe with proven teaching experience.
                         </p>
                     </div>
 
@@ -338,7 +378,7 @@ export default function LanguageLandingPage() {
                             How It Works
                         </h2>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                            Start your language learning journey in three simple steps
+                            Start your learning journey in three simple steps
                         </p>
 
                         {/* Action Buttons */}
@@ -367,7 +407,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/736x/55/e0/b2/55e0b2dd6dd1f837cf81fed815ba345b.jpg"
                                     alt="Find a tutor"
-                                    className="w-full h-48 object-cover object-top"
+                                    className="w-full h-48 object-contain object-center bg-gray-50"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -394,7 +434,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/1200x/bd/26/6e/bd266eec47507fbe6f6eda6e39732274.jpg"
                                     alt="Schedule lessons"
-                                    className="w-full h-48 object-cover object-top"
+                                    className="w-full h-48 object-contain object-center bg-gray-50"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -420,7 +460,7 @@ export default function LanguageLandingPage() {
                                 <img
                                     src="https://i.pinimg.com/736x/d5/15/10/d51510663b6f09a2d9b2ec186bcd37ea.jpg"
                                     alt="Start learning online"
-                                    className="w-full h-48 object-cover object-top"
+                                    className="w-full h-48 object-contain object-center bg-gray-50"
                                 />
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
@@ -521,7 +561,7 @@ export default function LanguageLandingPage() {
                             Ready to Start Learning?
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Get started with your language learning journey today.
+                            Get in touch with our support team to begin your journey.
                         </p>
                     </div>
 
@@ -762,7 +802,7 @@ export default function LanguageLandingPage() {
                         <div className="flex flex-wrap items-center justify-center gap-4">
                             <a href="#" className="hover:underline">Legal</a>
                             <a href="#" className="hover:underline">Privacy Policy</a>
-                            <a href="#" className="hover:underline">Cookie Policy</a>
+                            <a href="#" className="hover:underline">Terms of Use</a>
                         </div>
                     </div>
                 </div>
