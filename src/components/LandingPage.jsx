@@ -219,7 +219,7 @@ export default function LanguageLandingPage() {
 
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8">
                                 {[
-                                    { number: "0k", label: "Online Courses" },
+                                    { number: "0K", label: "Online Courses" },
                                     { number: "0+", label: "Expert Tutors" },
                                     { number: "0K+", label: "Online Students" },
                                     { number: "0K+", label: "Certified Courses" },
