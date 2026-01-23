@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Globe, BookOpen, Users, Award, CheckCircle, Menu, X, Star, Play, ArrowRight, Zap, Calendar, Video, Search } from 'lucide-react';
 import './LandingPage.css';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
+import southAfrica from '../assets/southAfrica.png';
+import albanian from '../assets/albanian.png';
+import amharic from '../assets/amharic.png';
+import arabic from '../assets/arabic.png';
+import asante from '../assets/asante.png';
+import armenian from '../assets/armenian.png';
+import arzerbaijani from '../assets/arzerbaijani.png';
+import baluchi from '../assets/baluchi.png';
 
 export default function LanguageLandingPage() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,14 +71,14 @@ export default function LanguageLandingPage() {
 
     // Language data with 0 tutors as requested
     const languages = [
-        { name: "Afrikaans", tutors: 0, icon: "🇿🇦" },
-        { name: "Albanian", tutors: 0, icon: "🇦🇱" },
-        { name: "Amharic", tutors: 0, icon: "🇪🇹" },
-        { name: "Arabic", tutors: 0, icon: "🇸🇦" },
-        { name: "Asante", tutors: 0, icon: "🇬🇭" },
-        { name: "Armenian", tutors: 0, icon: "🇦🇲" },
-        { name: "Azerbaijani", tutors: 0, icon: "🇦🇿" },
-        { name: "Baluchi", tutors: 0, icon: "🇵🇰" },
+        { name: "Afrikaans", tutors: 0, icon: southAfrica },
+        { name: "Albanian", tutors: 0, icon: albanian },
+        { name: "Amharic", tutors: 0, icon: amharic },
+        { name: "Arabic", tutors: 0, icon: arabic },
+        { name: "Asante", tutors: 0, icon: asante },
+        { name: "Armenian", tutors: 0, icon: armenian },
+        { name: "Azerbaijani", tutors: 0, icon: arzerbaijani },
+        { name: "Baluchi", tutors: 0, icon: baluchi },
     ];
 
     // Sample reviews
@@ -347,8 +355,12 @@ export default function LanguageLandingPage() {
                                 key={index}
                                 className="bg-white border border-gray-200 rounded-2xl px-5 py-6 text-center hover:border-orange-400 transition-colors duration-200"
                             >
-                                <div className="text-4xl mb-3" aria-hidden="true">
-                                    {language.icon}
+                                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center" aria-hidden="true">
+                                    <img
+                                        src={language.icon}
+                                        alt={`${language.name} flag`}
+                                        className="w-full h-full object-cover rounded-full"
+                                    />
                                 </div>
                                 <h3 className="text-sm font-semibold text-gray-900 mb-1">
                                     {language.name}
@@ -382,7 +394,7 @@ export default function LanguageLandingPage() {
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+                        {/* <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
                             <a
                                 href="#tutors"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-orange-500 text-white text-base font-semibold hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors"
@@ -396,19 +408,21 @@ export default function LanguageLandingPage() {
                             >
                                 Become an instructor
                             </button>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Steps */}
                     <div className="grid md:grid-cols-3 gap-10">
                         {/* Step 01 */}
                         <article className="flex flex-col">
-                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                                <img
-                                    src="https://i.pinimg.com/736x/55/e0/b2/55e0b2dd6dd1f837cf81fed815ba345b.jpg"
-                                    alt="Find a tutor"
-                                    className="w-full h-48 object-contain object-center bg-gray-50"
-                                />
+                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+                                <div className="w-full h-48 flex items-center justify-center">
+                                    <img
+                                        src="https://i.pinimg.com/736x/55/e0/b2/55e0b2dd6dd1f837cf81fed815ba345b.jpg"
+                                        alt="Find a tutor"
+                                        className="max-w-full max-h-full object-contain rounded-lg shadow-sm"
+                                    />
+                                </div>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
                                 <div className="flex items-center justify-between mb-4">
@@ -430,12 +444,14 @@ export default function LanguageLandingPage() {
 
                         {/* Step 02 */}
                         <article className="flex flex-col">
-                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                                <img
-                                    src="https://i.pinimg.com/1200x/bd/26/6e/bd266eec47507fbe6f6eda6e39732274.jpg"
-                                    alt="Schedule lessons"
-                                    className="w-full h-48 object-contain object-center bg-gray-50"
-                                />
+                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-br from-green-50 to-emerald-100 p-4">
+                                <div className="w-full h-48 flex items-center justify-center">
+                                    <img
+                                        src="https://i.pinimg.com/1200x/bd/26/6e/bd266eec47507fbe6f6eda6e39732274.jpg"
+                                        alt="Schedule lessons"
+                                        className="max-w-full max-h-full object-contain rounded-lg shadow-sm"
+                                    />
+                                </div>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
                                 <div className="flex items-center justify-between mb-4">
@@ -456,12 +472,14 @@ export default function LanguageLandingPage() {
 
                         {/* Step 03 */}
                         <article className="flex flex-col">
-                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                                <img
-                                    src="https://i.pinimg.com/736x/d5/15/10/d51510663b6f09a2d9b2ec186bcd37ea.jpg"
-                                    alt="Start learning online"
-                                    className="w-full h-48 object-contain object-center bg-gray-50"
-                                />
+                            <div className="w-full mb-4 overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-br from-purple-50 to-pink-100 p-4">
+                                <div className="w-full h-48 flex items-center justify-center">
+                                    <img
+                                        src="https://i.pinimg.com/736x/d5/15/10/d51510663b6f09a2d9b2ec186bcd37ea.jpg"
+                                        alt="Start learning online"
+                                        className="max-w-full max-h-full object-contain rounded-lg shadow-sm"
+                                    />
+                                </div>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-2xl p-6 flex-1">
                                 <div className="flex items-center justify-between mb-4">
